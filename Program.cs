@@ -1,9 +1,30 @@
+
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using EMallMVC.Data;
+using EMallMVC.Models;
+using Microsoft.Extensions.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("azure-product") ?? throw new InvalidOperationException("Connection string 'azure-product' not found.")));
+
+/*
+builder.Services.AddDbContext<AppDbContext>(
+    options => options.UseSqlServer(
+        builder.Configuration.GetConnectionString()));
+*/
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+
+
 var app = builder.Build();
+
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
