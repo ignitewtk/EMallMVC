@@ -8,7 +8,7 @@ This is a personal project deisigned to address demands of online shopping busin
 - account managing (pending);
 - shopping cart managing and ordering (pending).
 
-## Gettting Start
+## Getting Start
 
 ### Prerequisite
 
